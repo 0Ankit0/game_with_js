@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <h1 id="score">score:</h1>
+
+    <script>
+      const canvas = document.querySelector("#canvas");
+      canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
+      canvas.style.position = "fixed";
+
+      var velocity = 0;
+      var gravity = 0.1;
+      const drawer = canvas.getContext("2d");
+      var hasCollided = false;
+
+      const pipeVertivalGap = 150;
+      const pipeWidth = 50;
+      var box = {
+        //declare object
+        top: canvas.height / 2,
+        left: 50,
+        width: 50,
+        height: 50,
+      };
+
+      var pipes = []; // declare an array
+      var score = 0;
+      for (var i = 0; i < 8; i++) {
+        pipes.push(giveMePipe()); //add new value of pipe to the array pipes
+      }
+
+      setInterval(() => {
+        if (hasCollided) {
+          drawer.fillText("Game over", canvas.width / 2, canvas.height / 2);
+          setTimeout(() => {
+            window.location.reload();
+          }, 200);
+          return;
+        }
+        drawer.clearRect(0, 0, canvas.width, canvas.height);
+        velocity = velocity + gravity;
+        box.top = box.top + velocity;
+        if (box.top < 0) {
+          //mathi jana nadina
+          box.top = 0;
+          velocity = 0;
+        }
+        if (box.top > canvas.height - box.height) {
+          //tala jana nadina
+          box.top = canvas.height - box.height;
+          velocity = 0;
+        }
+        drawBox(box, "green"); //function call garne
+
+        // var pipe = giveMePipe(); //returns array of objects
+
+        // pipes.forEach((singlePipe) => {
+        //   drawBox(singlePipe.topPipe, "yellow");
+        //   drawBox(singlePipe.bottomPipe, "yellow");
+        // });
+
+        // for (var i = 0; i < pipes.length; i++) {
+        //   var singlePipe = pipes[i];
+        //   drawBox(singlePipe.topPipe, "red");
+        //   drawBox(singlePipe.bottomPipe, "red");
+        // }
+        var pipeSpeed = 1.5;
+        pipes.forEach((pipe) => {
+          pipe.topPipe.left -= pipeSpeed;
+          pipe.bottomPipe.left -= pipeSpeed;
+          drawBox(pipe.topPipe, "red");
+          drawBox(pipe.bottomPipe, "red");
+
+          if (pipe.topPipe.left < -50) {
+            pipes.shift(); //remove first value from the array
+            pipes.push(giveMePipe()); //add new value to the array
+
+            score++;
+            var scoreVal = document.querySelector("#score");
+            scoreVal.innerHTML = score;
+          }
+        });
+      }, 10);
+      window.addEventListener("keydown", (e) => {
+        switch (e.key) {
+          case " ":
+            velocity = velocity - 5;
+            break;
+        }
+      });
+
+      function drawBox(box, color) {
+        drawer.fillStyle = color;
+        drawer.fillRect(box.left, box.top, box.width, box.height);
+      }
+      function giveMePipe() {
+        var leftOffset = box.left + 200;
+        var pipeHorizontalGap = 300;
+        if (pipes.length == 0) {
+          //don't change left ofset
+        } else {
+          var lastPipe = pipes[pipes.length - 1]; // get the last index of the array
+          leftOffset = lastPipe.topPipe.left + pipeHorizontalGap;
+        }
+        var topPipeHeight = giveMeRandomHeight(
+          20,
+          canvas.height - pipeVertivalGap
+        ); //get random height for the top pipe
+        return {
+          topPipe: {
+            top: 0,
+            left: leftOffset,
+            width: pipeWidth,
+            height: topPipeHeight,
+          },
+          bottomPipe: {
+            top: topPipeHeight + pipeVertivalGap,
+            left: leftOffset,
+            width: 50,
+            height: canvas.height - topPipeHeight - pipeVertivalGap,
+          },
+        };
+      }
+
+      function giveMeRandomHeight(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min; //math.floor gives nearest smallest nunmer
+      }
+
+      function checkCollision(box1, box2) {
+        if (
+          box1.left < box2.left + box2.width &&
+          box1.left + box1.width > box2.left &&
+          box1.top < box2.top + box2.height &&
+          box1.height + box1.top > box2.top
+        ) {
+          hasCollided = true;
+        }
+      }
+    </script>
+  </body>
+</html>
