@@ -1,0 +1,100 @@
+:root {
+  color-scheme: dark;
+  --bg: #0f1220;
+  --panel: #191d31;
+  --panel-border: #2f3453;
+  --text: #f6f8ff;
+  --muted: #bac1e5;
+  --accent: #6e86ff;
+  --accent-strong: #9aabff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at top, #1e2550 0, #0f1220 45%);
+}
+
+.container {
+  width: min(1100px, 92vw);
+  margin: 2rem auto;
+}
+
+.hero h1 {
+  margin-bottom: 0.25rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--accent-strong);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+}
+
+.subtitle {
+  max-width: 70ch;
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+.card {
+  background: linear-gradient(160deg, #222842, var(--panel));
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  padding: 1.1rem;
+}
+
+.card p {
+  color: var(--muted);
+  min-height: 4.4rem;
+}
+
+.button {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  background: var(--accent);
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  font-weight: 700;
+}
+
+.button:hover,
+.button:focus-visible {
+  background: #8ba0ff;
+}
+
+.page {
+  width: min(1000px, 94vw);
+  margin: 1.25rem auto;
+}
+
+.back-link {
+  color: var(--accent-strong);
+  text-underline-offset: 0.2rem;
+}
+
+.panel {
+  background: #191d31;
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+button {
+  font: inherit;
+}

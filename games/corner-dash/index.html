@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Corner Dash</title>
+    <link rel="stylesheet" href="../../assets/app.css" />
+    <style>
+      #canvas {
+        width: 100%;
+        height: 70vh;
+        background: #0a0d18;
+        border: 1px solid #303759;
+        border-radius: 12px;
+      }
+
+      .meta {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        color: #bac1e5;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <a class="back-link" href="../../index.html">← Back to arcade</a>
+      <h1>Corner Dash</h1>
+      <p>Boxes move to the center. Press <kbd>Space</kbd> to knock them outward and keep chaos going.</p>
+      <section class="panel">
+        <div class="meta">
+          <span>Speed increases over time.</span>
+          <strong id="score">Score: 0</strong>
+        </div>
+        <canvas id="canvas"></canvas>
+      </section>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>

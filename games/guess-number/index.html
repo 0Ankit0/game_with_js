@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number Guess</title>
+    <link rel="stylesheet" href="../../assets/app.css" />
+    <style>
+      form {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      input {
+        font: inherit;
+        border-radius: 8px;
+        border: 1px solid #3d4366;
+        background: #0e1327;
+        color: #fff;
+        padding: 0.6rem;
+      }
+
+      .status {
+        margin-top: 0.75rem;
+        color: #bac1e5;
+      }
+
+      .success {
+        color: #70e6a2;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <a class="back-link" href="../../index.html">← Back to arcade</a>
+      <h1>Number Guess</h1>
+      <section class="panel">
+        <p>Guess the hidden number between <strong>1</strong> and <strong>100</strong>.</p>
+        <form id="guess-form">
+          <input type="number" id="guess-input" min="1" max="100" required placeholder="Enter a guess" />
+          <button class="button" type="submit">Try</button>
+          <button class="button" type="button" id="reset-btn">Reset</button>
+        </form>
+        <p class="status" id="status">Game started! Make your first guess.</p>
+        <p class="status" id="attempts">Attempts: 0</p>
+      </section>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
