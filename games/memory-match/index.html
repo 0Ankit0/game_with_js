@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Match</title>
+    <link rel="stylesheet" href="../../assets/app.css" />
+    <style>
+      .toolbar {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.8rem;
+        color: #bac1e5;
+      }
+
+      .board {
+        display: grid;
+        gap: 0.55rem;
+        grid-template-columns: repeat(4, minmax(55px, 1fr));
+      }
+
+      .card {
+        border: 1px solid #3b4163;
+        background: #101630;
+        color: #fff;
+        border-radius: 10px;
+        min-height: 80px;
+        font-size: 1.7rem;
+      }
+
+      .card.flipped,
+      .card.matched {
+        background: #2a335a;
+      }
+
+      .card.matched {
+        border-color: #70e6a2;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <a class="back-link" href="../../index.html">← Back to arcade</a>
+      <h1>Memory Match</h1>
+      <section class="panel">
+        <div class="toolbar">
+          <span id="moves">Moves: 0</span>
+          <button class="button" id="restart">Restart</button>
+        </div>
+        <div class="board" id="board"></div>
+        <p id="message" class="status">Find all pairs to win.</p>
+      </section>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>

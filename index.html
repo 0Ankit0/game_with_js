@@ -2,14 +2,45 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="styles.css" />
+    <title>JS Fun Arcade</title>
+    <link rel="stylesheet" href="assets/app.css" />
   </head>
   <body>
-    <canvas id="canvas"></canvas>
+    <main class="container">
+      <header class="hero">
+        <p class="eyebrow">JavaScript mini projects</p>
+        <h1>JS Fun Arcade</h1>
+        <p class="subtitle">
+          A cleaned-up playground with small browser games. Pick one and start playing.
+        </p>
+      </header>
 
-    <script src="script.js"></script>
+      <section class="grid" aria-label="Available games">
+        <article class="card">
+          <h2>Corner Dash</h2>
+          <p>
+            Move boxes rush from all corners toward the center. Press <kbd>Space</kbd> to pulse them back.
+          </p>
+          <a href="games/corner-dash/index.html" class="button">Play Corner Dash</a>
+        </article>
+
+        <article class="card">
+          <h2>Number Guess</h2>
+          <p>
+            Guess a random number from 1-100 with smart hints and a score based on attempts.
+          </p>
+          <a href="games/guess-number/index.html" class="button">Play Number Guess</a>
+        </article>
+
+        <article class="card">
+          <h2>Memory Match</h2>
+          <p>
+            Flip cards, remember positions, and clear all pairs in as few moves as possible.
+          </p>
+          <a href="games/memory-match/index.html" class="button">Play Memory Match</a>
+        </article>
+      </section>
+    </main>
   </body>
 </html>
